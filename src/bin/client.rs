@@ -1,6 +1,3 @@
-extern crate rust_thrift_example;
-extern crate thrift;
-
 use thrift::protocol::{TBinaryInputProtocol, TBinaryOutputProtocol};
 use thrift::transport::{TIoChannel, TTcpChannel};
 

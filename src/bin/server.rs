@@ -1,6 +1,3 @@
-extern crate rust_thrift_example;
-extern crate thrift;
-
 use thrift::protocol::{TBinaryInputProtocolFactory, TInputProtocolFactory};
 use thrift::protocol::{TBinaryOutputProtocolFactory, TOutputProtocolFactory};
 use thrift::server::TServer;
