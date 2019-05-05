@@ -1,5 +1,5 @@
-use thrift::protocol::{TBinaryInputProtocolFactory, TInputProtocolFactory};
-use thrift::protocol::{TBinaryOutputProtocolFactory, TOutputProtocolFactory};
+use thrift::protocol::{TCompactInputProtocolFactory, TInputProtocolFactory};
+use thrift::protocol::{TCompactOutputProtocolFactory, TOutputProtocolFactory};
 use thrift::server::TServer;
 use thrift::transport::{TBufferedReadTransportFactory, TReadTransportFactory};
 use thrift::transport::{TBufferedWriteTransportFactory, TWriteTransportFactory};
@@ -22,11 +22,11 @@ fn run() -> thrift::Result<()> {
 
     // create input protocol/transport factory
     let i_tran_fact: Box<TReadTransportFactory> = Box::new(TBufferedReadTransportFactory::new());
-    let i_prot_fact: Box<TInputProtocolFactory> = Box::new(TBinaryInputProtocolFactory::new());
+    let i_prot_fact: Box<TInputProtocolFactory> = Box::new(TCompactInputProtocolFactory::new());
 
     // create output protocol/transport factory
     let o_tran_fact: Box<TWriteTransportFactory> = Box::new(TBufferedWriteTransportFactory::new());
-    let o_prot_fact: Box<TOutputProtocolFactory> = Box::new(TBinaryOutputProtocolFactory::new());
+    let o_prot_fact: Box<TOutputProtocolFactory> = Box::new(TCompactOutputProtocolFactory::new());
 
     // create the server and start listening
     let processor = ExampleServiceSyncProcessor::new(ExampleServiceHandlerImpl {});

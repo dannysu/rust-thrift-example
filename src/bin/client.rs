@@ -1,4 +1,4 @@
-use thrift::protocol::{TBinaryInputProtocol, TBinaryOutputProtocol};
+use thrift::protocol::{TCompactInputProtocol, TCompactOutputProtocol};
 use thrift::transport::{TIoChannel, TTcpChannel};
 
 use rust_thrift_example::{ExampleServiceSyncClient, TExampleServiceSyncClient};
@@ -20,8 +20,8 @@ fn run() -> thrift::Result<()> {
     let (i_chan, o_chan) = c.split()?;
 
     // build the input/output protocol
-    let i_prot = TBinaryInputProtocol::new(i_chan, true);
-    let o_prot = TBinaryOutputProtocol::new(o_chan, true);
+    let i_prot = TCompactInputProtocol::new(i_chan);
+    let o_prot = TCompactOutputProtocol::new(o_chan);
 
     // use the input/output protocol to create a Thrift client
     let mut client = ExampleServiceSyncClient::new(i_prot, o_prot);
